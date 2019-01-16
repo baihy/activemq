@@ -14,7 +14,8 @@ import javax.jms.*;
 public class TextConsumer {
 
     public String consumerTextMessage() {
-        String returnCode = "";
+
+        String returnCode = null;
         ConnectionFactory factory = null;
         Connection connection = null;
         Session session = null;
