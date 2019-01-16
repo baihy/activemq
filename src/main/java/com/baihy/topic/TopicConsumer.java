@@ -1,4 +1,4 @@
-package com.baihy.text;
+package com.baihy.topic;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -6,15 +6,14 @@ import javax.jms.*;
 
 /**
  * @projectName: activemq
- * @packageName: com.baihy.text
+ * @packageName: com.baihy.topic
  * @description:
  * @author: huayang.bai
- * @date: 2019/01/16 11:13
+ * @date: 2019/01/16 15:36
  */
-public class TextConsumer {
+public class TopicConsumer {
 
     public String consumerTextMessage() {
-
         String returnCode = null;
         ConnectionFactory factory = null;
         Connection connection = null;
@@ -23,14 +22,14 @@ public class TextConsumer {
         MessageConsumer consumer = null;
         Message message = null;
         try {
-            factory = new ActiveMQConnectionFactory("admin", "admin", "tcp://192.168.21.21:61616");
+            factory = new ActiveMQConnectionFactory("tcp://192.168.21.21:61616");
             connection = factory.createConnection();
             /**
              * 消息的消费者必须启动连接，否则无法处理消息
              */
             connection.start();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            destination = session.createQueue("first-queue");
+            destination = session.createTopic("first-topic");
             /**
              *创建消费者对象，在指定的目的地中获取消息
              */
@@ -68,4 +67,11 @@ public class TextConsumer {
         }
         return returnCode;
     }
+
+    public static void main(String[] args) {
+        TopicConsumer consumer = new TopicConsumer();
+        String str = consumer.consumerTextMessage();
+        System.out.println(str);
+    }
+
 }

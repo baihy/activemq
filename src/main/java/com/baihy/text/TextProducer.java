@@ -45,7 +45,7 @@ public class TextProducer {
              * 创建链接的方法有重载：其中createConnection(String userName, String password)
              * 可以在创建链接工厂时，只传递连接地址，不传用户认证信息，可以在创建链接的时候，传入认证信息。
              */
-            connection = factory.createConnection();
+            connection = factory.createConnection("admin", "admin");
             /**
              * connection = factory.createConnection("username", "password");
              */
