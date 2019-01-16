@@ -17,7 +17,6 @@ import java.util.Date;
 public class ObjectConsumerListener {
 
     public void consumerListener() {
-
         ConnectionFactory factory = null;
         Connection connection = null;
         Session session = null;

@@ -44,7 +44,6 @@ public class ObjectProducer {
         }
     }
 
-
     public static void main(String[] args) {
         ObjectProducer producer = new ObjectProducer();
         producer.sendMessage();
