@@ -27,12 +27,12 @@ public class ObjectProducer {
             connection.start();
             session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
             destination = session.createQueue("obj-listener");
-            producer = session.createProducer(destination);
+            producer = session.createProducer(null);
             Random random = new Random();
             for (int i = 0; i < 100; i++) {
                 Integer obj = random.nextInt(100);
                 message = session.createObjectMessage(obj);
-                producer.send(message);
+                producer.send(destination, message);
                 try {
                     Thread.sleep(2000L);
                 } catch (InterruptedException e) {
