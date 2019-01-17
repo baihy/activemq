@@ -26,7 +26,7 @@ public class ObjectConsumerListener {
 
         try {
             factory = new ActiveMQConnectionFactory("tcp://192.168.21.21:61616");
-            connection = factory.createConnection();
+            connection = factory.createConnection("admin", "admin");
             connection.start();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             destination = session.createQueue("obj-listener");
