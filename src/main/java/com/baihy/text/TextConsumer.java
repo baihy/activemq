@@ -38,7 +38,10 @@ public class TextConsumer {
             /**
              * 获取队列中的消息，receive方法是一个主动获取的方法。执行一次拉取一个消息。
              */
+            // consumer的receive方法中的超时是consumer连接activemq服务器超时，而不是消息确认超时。是等待多久后，consumer没有消息可处理，超时。
+            // consumer.receive(1000);
             message = consumer.receive();
+
             TextMessage textMessage = (TextMessage) message;
             returnCode = textMessage.getText();
         } catch (JMSException e) {
